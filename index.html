@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Props Node Hosting</title>
+<style>
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:#e5eefb;
+    background:url('https://cdn.discordapp.com/attachments/1430506426639585300/1433028702580506775/Good_Morning_Hello_GIF_by_Minecraft.gif') no-repeat center center fixed;
+    background-size:cover;
+  }
+  .container{max-width:1100px;margin:auto;padding:20px;}
+  .nav{display:flex;justify-content:flex-end;gap:10px;margin-bottom:20px;}
+  .btn{
+    background:#06b6d4;border:none;padding:8px 14px;border-radius:8px;
+    cursor:pointer;font-weight:600;color:#fff;transition:.2s;
+  }
+  .btn:hover{box-shadow:0 0 10px #06b6d4;}
+  .tabbar{display:flex;justify-content:center;gap:10px;margin-bottom:20px;}
+  .section{
+    background:rgba(7,17,33,0.9);
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 4px 25px rgba(0,0,0,0.6);
+  }
+  h1,h2{text-align:center;text-shadow:0 0 8px rgba(34,211,238,0.7);}
+  .popup{
+    position:fixed;inset:0;background:rgba(0,0,0,0.75);
+    display:none;align-items:center;justify-content:center;
+  }
+  .popup-content{
+    background:#0a1a2f;padding:20px;border-radius:12px;
+    box-shadow:0 0 25px rgba(6,182,212,0.5);
+    width:90%;max-width:350px;
+  }
+  input{
+    width:100%;margin:6px 0;padding:8px;border-radius:6px;
+    border:1px solid #155e75;background:#0f2a3d;color:#e5eefb;
+  }
+  .close-btn{background:#334155;color:#fff;border:none;padding:6px 10px;border-radius:6px;margin-top:8px;cursor:pointer;}
+  .worker-grid,.shop-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:20px;
+  }
+  .worker-card,.shop-card{
+    background:#0b172b;
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+    transition:.2s;
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
+  }
+  .worker-card:hover,.shop-card:hover{transform:scale(1.05);box-shadow:0 0 15px #06b6d4;}
+  .worker-card img,.shop-card img{width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:8px;}
+  .shop-card img{width:140px;height:140px;border-radius:8px;}
+  .price{font-size:1.2rem;font-weight:600;color:#22d3ee;}
+  .qr-msg{margin-top:10px;text-align:center;color:#38bdf8;font-size:14px;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav" id="nav"></div>
+
+  <div class="tabbar">
+    <button class="btn" onclick="showSection('homeSection')">Home</button>
+    <button class="btn" onclick="showSection('workersSection')">Our Workers</button>
+    <button class="btn" onclick="showSection('shopSection')">Shop</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="homeSection" class="section">
+    <h1>Welcome to Props Node Hosting</h1>
+    <p style="text-align:center;max-width:700px;margin:auto;">
+      Get your own Minecraft server with blazing performance, DDoS protection, and 24/7 uptime.  
+      Join our Discord community and become part of the Props Node family!
+    </p>
+    <div style="text-align:center;margin-top:20px;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz14G3flOHK0TPQ7Tw_qsrJNS2mKsahX0K1g&s" width="60">
+      <p><a href="https://discord.gg/RUeaAYufXg" target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:bold;">Join our Discord Server</a></p>
+    </div>
+  </div>
+
+  <!-- WORKERS -->
+  <div id="workersSection" class="section" style="display:none;">
+    <h2>Our Team</h2>
+    <div class="worker-grid">
+      <div class="worker-card"><img src="https://cdn.discordapp.com/attachments/1430506426639585300/1433036932107210772/image.png"><h3>Founder</h3><p>Sovel_rick</p></div>
+      <div class="worker-card"><img src="https://cdn.discordapp.com/attachments/1430506426639585300/1433038520846520410/Screenshot_2025-10-29_155235.png"><h3>Co-Founder</h3><p>SkyOG (NotSkyOG)</p></div>
+      <div class="worker-card"><img src="https://cdn.discordapp.com/attachments/1430506426639585300/1433037142745022514/Screenshot_2025-02-20_212511.png"><h3>Minecraft Developer</h3><p>FrDreamoHeh</p></div>
+      <div class="worker-card"><img src="https://cdn.discordapp.com/attachments/1430506426639585300/1433038049079722085/Screenshot_2025-10-29_155003.png"><h3>Minecraft Developer</h3><p>Darkwolf</p></div>
+      <div class="worker-card"><img src="https://tse2.mm.bing.net/th/id/OIP.DeUuWk5r_v2VX61foEQOxwAAAA?w=128&h=128&rs=1&pid=ImgDetMain&o=7&rm=3"><h3>Texture Pack Handler</h3><p>Not_Tanish</p></div>
+      <div class="worker-card"><img src="https://cdn.discordapp.com/attachments/1430506426639585300/1433037142745022514/Screenshot_2025-02-20_212511.png"><h3>Web Developer</h3><p>FrDreamoHeh</p></div>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <div id="shopSection" class="section" style="display:none;">
+    <h2>Shop Plans</h2>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <h3>Starter</h3>
+        <p class="price">₹100</p>
+        <p>4 GB Server</p>
+      </div>
+      <div class="shop-card">
+        <h3>Advanced</h3>
+        <p class="price">₹300</p>
+        <p>7 GB Server</p>
+      </div>
+      <div class="shop-card">
+        <h3>Pro</h3>
+        <p class="price">₹500</p>
+        <p>10 GB Server</p>
+      </div>
+      <div class="shop-card">
+        <h3>Premium</h3>
+        <p class="price">₹800</p>
+        <p>15 GB + Custom Plugins + Dev Support</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:30px;">
+      <img src="https://cdn.discordapp.com/attachments/1427615744656412754/1432763699491508344/InShot_20251024_145436071.jpg" width="200" style="border-radius:10px;">
+      <p class="qr-msg">After Payment Done, Make a Ticket on Our Discord Server.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Login Popup -->
+<div class="popup" id="loginPopup">
+  <div class="popup-content">
+    <h3>Login</h3>
+    <input id="loginEmail" placeholder="Gmail">
+    <input id="loginPass" placeholder="Password" type="password">
+    <button class="btn" onclick="login()">Login</button>
+    <p id="loginMsg" style="color:#f87171;"></p>
+    <button class="close-btn" onclick="closePopup('loginPopup')">Close</button>
+  </div>
+</div>
+
+<!-- Register Popup -->
+<div class="popup" id="registerPopup">
+  <div class="popup-content">
+    <h3>Register</h3>
+    <input id="regEmail" placeholder="Gmail">
+    <input id="regPass" placeholder="Password" type="password">
+    <input id="regDiscord" placeholder="Discord Name (optional)">
+    <input id="regFirst" placeholder="First Name">
+    <input id="regLast" placeholder="Last Name">
+    <button class="btn" onclick="register()">Register</button>
+    <p id="registerMsg" style="color:#4ade80;"></p>
+    <button class="close-btn" onclick="closePopup('registerPopup')">Close</button>
+  </div>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+const users=JSON.parse(localStorage.getItem('users')||'{}');
+let logged=localStorage.getItem('logged');
+
+function renderNav(){
+  if(logged&&users[logged]){
+    nav.innerHTML=`<button class="btn" onclick="logout()">Logout</button>`;
+  }else{
+    nav.innerHTML=`<button class="btn" onclick="openPopup('loginPopup')">Login</button>
+                   <button class="btn" onclick="openPopup('registerPopup')">Register</button>`;
+  }
+}
+function showSection(id){
+  ['homeSection','workersSection','shopSection'].forEach(s=>document.getElementById(s).style.display='none');
+  document.getElementById(id).style.display='block';
+}
+function openPopup(id){document.getElementById(id).style.display='flex';}
+function closePopup(id){document.getElementById(id).style.display='none';}
+function register(){
+  const email=regEmail.value.trim().toLowerCase(),pass=regPass.value.trim(),
+  first=regFirst.value.trim(),last=regLast.value.trim();
+  if(!email||!pass||!first||!last){registerMsg.textContent="Please fill all fields!";return;}
+  if(users[email]){registerMsg.textContent="Account already exists!";return;}
+  users[email]={pass,first,last};localStorage.setItem('users',JSON.stringify(users));
+  registerMsg.textContent="Account created! You can login now.";
+}
+function login(){
+  const email=loginEmail.value.trim().toLowerCase(),pass=loginPass.value.trim();
+  if(!users[email]){loginMsg.textContent="No account found!";return;}
+  if(users[email].pass!==pass){loginMsg.textContent="Wrong password!";return;}
+  logged=email;localStorage.setItem('logged',email);
+  closePopup('loginPopup');renderNav();
+  alert("Welcome "+users[email].first+"!");
+}
+function logout(){localStorage.removeItem('logged');logged=null;renderNav();}
+renderNav();
+</script>
+</body>
+</html>
